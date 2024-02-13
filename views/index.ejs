@@ -5,17 +5,26 @@
 
 <img src="/img/hero-image.webp" alt="" class="hero-image" width="981" />
 
-<section class="articels">
+<section class="articles">
     <h2 class="articles__heading">Lastest Pages</h2>
 
-    <ul class="article-ui">
-        <li>
-            <a href="#">
-                <span>Post Title</span>
-                <span class="article-list__date">Date</span>
-            </a>
-        </li>
+    <ul class="article-ul">
+
+        <% data.forEach(post => { %>
+            <li>
+                <a href="/post/<%= post._id %>">
+                    <span> <%= post.title %></span>
+                    <span class="article-list__date"><%= post.createdAt %></span>
+                </a>
+            </li>
+        <% }) %>
+
+        
     </ul>
 
-    <a href="" class="pagination">View Older Posts</a>
+    <% if (nextPage !== null) { %>
+        <a href="/?page=<%= nextPage  %>" class="pagination">View Older Posts</a>
+    <% } %>
+
+    
 </section>
